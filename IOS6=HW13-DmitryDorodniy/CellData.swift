@@ -20,7 +20,7 @@ class CellApi {
                         Cell(title: "Wi-Fi", detail: "Не подключено"),
                         Cell(title: "Bluetooth", detail: "Вкл."),
                         Cell(title: "Сотовая связь"),
-                        Cell(title: "Режим модема"),
+                        Cell(title: "Режим модема", detail: "Выкл."),
             Cell(title: "VPN", isToggle: true)]
 
         let section2 = [Cell(title: "Уведомления"),
@@ -31,7 +31,7 @@ class CellApi {
         let section3 = [Cell(title: "Основные"),
                         Cell(title: "Пункт управления"),
                         Cell(title: "Экран и яркость"),
-                        Cell(title: "Экран \(#"Домой"#)"),
+                        Cell(title: "Экран \u{00AB}Домой\u{00BB}"),
                         Cell(title: "Универсальный доступ")]
 
         return [section1, section2, section3]
@@ -41,3 +41,7 @@ class CellApi {
 
 var allCellData = CellApi.getData()
 
+enum Metric {
+    static let reuseString: String = "cell"
+
+}

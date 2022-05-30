@@ -9,41 +9,32 @@ import UIKit
 
 class TableViewController: UIViewController {
 
-    private lazy var topLabel: UILabel = {
-
-        let label = UILabel()
-
-        label.text = "Настройки"
-        label.backgroundColor = .systemFill
-        return label
-    }()
-
     //    создаём свойство класса с таблицей
     private lazy var tableView: UITableView = {
         //        таблица с закруглёнными краями групп
-        let table = UITableView(frame: .zero, style: .insetGrouped)
+        let table = UITableView(frame: view.bounds, style: .insetGrouped)
 
         table.dataSource = self
         table.delegate = self
         return table
     }()
 
-
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
         setupHierarchy()
         setupLayout()
-
     }
 
+    // MARK: - Settings
     private func setupView() {
 
         view.backgroundColor = .systemBackground
-
+        navigationItem.title = "Настройки"
         //        регистрируем таблицу
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Metric.reuseString)
     }
 
     private func setupHierarchy() {
@@ -53,14 +44,11 @@ class TableViewController: UIViewController {
 
     private func setupLayout() {
 
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
 }
 
+// MARK: - Table extentions
 extension TableViewController: UITableViewDataSource  {
     func numberOfSections(in tableView: UITableView) -> Int {
         return allCellData.count //число секций
@@ -73,25 +61,28 @@ extension TableViewController: UITableViewDataSource  {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         //стиль ячейки таблицы
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
-        //       let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: Metric.reuseString)
+        // let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         //стиль контента в ячейках
         var content = cell.defaultContentConfiguration()
 
         cell.accessoryType = .disclosureIndicator
         //текст тайтла и описания
+        content.image = UIImage(systemName: "play")
+        content.imageProperties.tintColor = .systemOrange
+ 
+        content.imageToTextPadding = 3
         content.text = allCellData[indexPath.section][indexPath.row].title ?? ""
         content.secondaryText = allCellData[indexPath.section][indexPath.row].detail ?? ""
 
-//        //определяем тип ячейка для установки системного значка
-//        if allCellData[indexPath.section][indexPath.row].discl != nil {
-//            cell.accessoryType = .disclosureIndicator
-//        }
         cell.contentConfiguration = content
 
-        //        cell.textLabel?.text = allCellData[indexPath.section][indexPath.row].title
-        //        cell.detailTextLabel?.text = allCellData[indexPath.section][indexPath.row].detail
+        //switch button
+        let switchButton = UISwitch(frame: .zero)
+        if allCellData[indexPath.section][indexPath.row].isToggle != nil {
+            cell.accessoryView = switchButton
+        }
 
         return cell
     }
@@ -100,6 +91,9 @@ extension TableViewController: UITableViewDataSource  {
 extension TableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print(allCellData[indexPath.section][indexPath.row].detail ?? "nil")
+        let title = allCellData[indexPath.section][indexPath.row].title ?? "nil"
+        print("\(title) cell pressed")
     }
 }
+
+
