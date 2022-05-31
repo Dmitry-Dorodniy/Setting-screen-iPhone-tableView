@@ -35,6 +35,7 @@ class TableViewController: UIViewController {
         navigationItem.title = "Настройки"
         //        регистрируем таблицу
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Metric.reuseString)
+        tableView.register(ChevronTableViewCell.self, forCellReuseIdentifier: ChevronTableViewCell.identifier)
     }
 
     private func setupHierarchy() {
@@ -43,13 +44,21 @@ class TableViewController: UIViewController {
     }
 
     private func setupLayout() {
-
         tableView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+
+    @objc func didChangeSwitch(_ sender: UISwitch) {
+        if sender.isOn {
+            print("Turn ON")
+        } else {
+            print("Turn OFF")
+        }
     }
 }
 
 // MARK: - Table extentions
 extension TableViewController: UITableViewDataSource  {
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return allCellData.count //число секций
     }
@@ -57,32 +66,54 @@ extension TableViewController: UITableViewDataSource  {
         return allCellData[section].count //задаём число элементов в каждой секции
     }
 
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellDataIndex = allCellData[indexPath.section][indexPath.row]
+
+//        if cellDataIndex.title == "Bluetooth" {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: ChevronTableViewCell.identifier, for: indexPath)
+//            cell.accessoryType = .disclosureIndicator
+//            return cell
+//        }
 
         //стиль ячейки таблицы
         let cell = UITableViewCell(style: .value1, reuseIdentifier: Metric.reuseString)
         // let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         //стиль контента в ячейках
-        var content = cell.defaultContentConfiguration()
-
         cell.accessoryType = .disclosureIndicator
         //текст тайтла и описания
-        content.image = UIImage(systemName: "play")
-        content.imageProperties.tintColor = .systemOrange
- 
-        content.imageToTextPadding = 3
-        content.text = allCellData[indexPath.section][indexPath.row].title ?? ""
-        content.secondaryText = allCellData[indexPath.section][indexPath.row].detail ?? ""
+
+        let colorView = UIView()
+        colorView.layer.masksToBounds = true
+        colorView.layer.cornerRadius = 4
+        colorView.backgroundColor = cellDataIndex.iconColor ?? .tintColor
+        cell.addSubview(colorView)
+
+        var content = cell.defaultContentConfiguration()
+        var image = UIImage(systemName: cellDataIndex.image ?? "")
+        //        let image = UIImage(systemName: cellDataIndex.image ?? "")
+
+        //        content.imageProperties.cornerRadius = 40
+        content.imageProperties.tintColor = .white
+        content.imageProperties.maximumSize = CGSize(width: 19, height: 19)
+        content.image = image
+        content.text = cellDataIndex.title
+        content.secondaryText = cellDataIndex.detail ?? ""
 
         cell.contentConfiguration = content
 
         //switch button
         let switchButton = UISwitch(frame: .zero)
-        if allCellData[indexPath.section][indexPath.row].isToggle != nil {
+        if cellDataIndex.isToggle != nil {
+            switchButton.addTarget(self, action: #selector(didChangeSwitch(_:)), for: .valueChanged)
             cell.accessoryView = switchButton
         }
+
+        colorView.translatesAutoresizingMaskIntoConstraints = false
+        colorView.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor).isActive = true
+        colorView.leftAnchor.constraint(equalTo: cell.contentView.layoutMarginsGuide.leftAnchor, constant: -1).isActive = true
+        colorView.heightAnchor.constraint(equalToConstant: 26).isActive = true
+        colorView.widthAnchor.constraint(equalToConstant: 26).isActive = true
 
         return cell
     }
@@ -91,9 +122,8 @@ extension TableViewController: UITableViewDataSource  {
 extension TableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let title = allCellData[indexPath.section][indexPath.row].title ?? "nil"
+        let title = allCellData[indexPath.section][indexPath.row].title
         print("\(title) cell pressed")
     }
 }
-
 
