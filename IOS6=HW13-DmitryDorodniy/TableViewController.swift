@@ -37,7 +37,7 @@ class TableViewController: UIViewController {
         navigationItem.title = "Настройки"
         //        регистрируем таблицу
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Metric.reuseString)
-        tableView.register(ChevronTableViewCell.self, forCellReuseIdentifier: ChevronTableViewCell.identifier)
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)
     }
 
     private func setupHierarchy() {
@@ -72,7 +72,7 @@ extension TableViewController: UITableViewDataSource  {
         let cellDataIndex = allCellData[indexPath.section][indexPath.row]
 
         if cellDataIndex.isCustomCell != nil {
-            let cell = tableView.dequeueReusableCell(withIdentifier: ChevronTableViewCell.identifier, for: indexPath) as! ChevronTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.identifier, for: indexPath) as! CustomTableViewCell
             cell.accessoryType = .disclosureIndicator
             cell.cellData = cellDataIndex
             if cellDataIndex.isToggle != nil {

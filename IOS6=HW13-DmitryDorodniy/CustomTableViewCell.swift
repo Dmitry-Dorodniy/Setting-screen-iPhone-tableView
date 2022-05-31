@@ -1,5 +1,5 @@
 //
-//  ChevronTableViewCell.swift
+//  customTableViewCell.swift
 //  IOS6=HW13-DmitryDorodniy
 //
 //  Created by Dmitry Dorodniy on 31.05.2022.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class ChevronTableViewCell: UITableViewCell {
-    static let identifier = "ChevronTableViewCell"
+class CustomTableViewCell: UITableViewCell {
+    static let identifier = "CustomTableViewCell"
 
     var cellData: Cell? {
         didSet {
