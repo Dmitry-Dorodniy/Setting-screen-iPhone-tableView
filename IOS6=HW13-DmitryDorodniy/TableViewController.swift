@@ -73,11 +73,14 @@ extension TableViewController: UITableViewDataSource  {
 
         if cellDataIndex.isCustomCell != nil {
             let cell = tableView.dequeueReusableCell(withIdentifier: ChevronTableViewCell.identifier, for: indexPath) as! ChevronTableViewCell
-           cell.accessoryType = .disclosureIndicator
+            cell.accessoryType = .disclosureIndicator
             cell.cellData = cellDataIndex
-//            let switchButton = UISwitch(frame: .zero)
-//            switchButton.addTarget(self, action: #selector(didChangeSwitch(_:)), for: .valueChanged)
-//            cell.accessoryView = switchButton
+            if cellDataIndex.isToggle != nil {
+                let switchButton = UISwitch(frame: .zero)
+                switchButton.addTarget(self, action: #selector(didChangeSwitch(_:)), for: .valueChanged)
+                cell.accessoryView = switchButton
+            }
+
             return cell
         }
 
@@ -109,7 +112,7 @@ extension TableViewController: UITableViewDataSource  {
         cell.contentConfiguration = content
 
         //switch button
-//        let switchButton = UISwitch(frame: .zero)
+        //        let switchButton = UISwitch(frame: .zero)
         if cellDataIndex.isToggle != nil {
             let switchButton = UISwitch(frame: .zero)
             switchButton.addTarget(self, action: #selector(didChangeSwitch(_:)), for: .valueChanged)

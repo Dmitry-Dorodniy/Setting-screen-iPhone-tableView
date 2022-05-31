@@ -25,7 +25,7 @@ class CellApi {
                         Cell(image: "bluetooth", title: "Bluetooth", detail: "Вкл.", isCustomCell: true),
                         Cell(image: "antenna.radiowaves.left.and.right", iconColor: .systemGreen, title: "Сотовая связь"),
                         Cell(image: "personalhotspot", title: "Режим модема", detail: "Выкл."),
-                        Cell(image: "wifi.square.fill", title: "VPN", isToggle: true)]
+                        Cell(image: "vpn", title: "VPN", isToggle: true, isCustomCell: true)]
 
         let section2 = [Cell(image: "bell.badge.fill", iconColor: .systemRed, title: "Уведомления"),
                         Cell(image: "speaker.wave.3.fill", iconColor: .systemRed, title: "Звуки, тактильные сигналы"),
@@ -35,7 +35,7 @@ class CellApi {
         let section3 = [Cell(image: "gear", iconColor: .systemGray, title: "Основные"),
                         Cell(image: "switch.2", iconColor: .systemGray, title: "Пункт управления"),
                         Cell(image: "textformat.size", title: "Экран и яркость"),
-                        Cell(title: "Экран \u{00AB}Домой\u{00BB}"),
+                        Cell(image: "homescreen", iconColor: .systemBlue, title: "Экран \u{00AB}Домой\u{00BB}", isCustomCell: true),
                         Cell(image: "accessibility", title: "Универсальный доступ", isCustomCell: true)]
 
         return [section1, section2, section3]
