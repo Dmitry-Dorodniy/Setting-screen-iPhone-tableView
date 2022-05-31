@@ -9,6 +9,8 @@ import UIKit
 
 class TableViewController: UIViewController {
 
+    private let allCellData = CellApi.getData()
+
     //    создаём свойство класса с таблицей
     private lazy var tableView: UITableView = {
         //        таблица с закруглёнными краями групп
@@ -69,11 +71,15 @@ extension TableViewController: UITableViewDataSource  {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellDataIndex = allCellData[indexPath.section][indexPath.row]
 
-//        if cellDataIndex.title == "Bluetooth" {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: ChevronTableViewCell.identifier, for: indexPath)
-//            cell.accessoryType = .disclosureIndicator
-//            return cell
-//        }
+        if cellDataIndex.title == "Bluetooth" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ChevronTableViewCell.identifier, for: indexPath) as! ChevronTableViewCell
+           cell.accessoryType = .disclosureIndicator
+            cell.cellData = cellDataIndex
+//            let switchButton = UISwitch(frame: .zero)
+//            switchButton.addTarget(self, action: #selector(didChangeSwitch(_:)), for: .valueChanged)
+//            cell.accessoryView = switchButton
+            return cell
+        }
 
         //стиль ячейки таблицы
         let cell = UITableViewCell(style: .value1, reuseIdentifier: Metric.reuseString)
@@ -90,7 +96,7 @@ extension TableViewController: UITableViewDataSource  {
         cell.addSubview(colorView)
 
         var content = cell.defaultContentConfiguration()
-        var image = UIImage(systemName: cellDataIndex.image ?? "")
+        let image = UIImage(systemName: cellDataIndex.image ?? "")
         //        let image = UIImage(systemName: cellDataIndex.image ?? "")
 
         //        content.imageProperties.cornerRadius = 40
@@ -103,8 +109,9 @@ extension TableViewController: UITableViewDataSource  {
         cell.contentConfiguration = content
 
         //switch button
-        let switchButton = UISwitch(frame: .zero)
+//        let switchButton = UISwitch(frame: .zero)
         if cellDataIndex.isToggle != nil {
+            let switchButton = UISwitch(frame: .zero)
             switchButton.addTarget(self, action: #selector(didChangeSwitch(_:)), for: .valueChanged)
             cell.accessoryView = switchButton
         }

@@ -40,7 +40,6 @@
 		8A3DFE322844C6A600311470 = {
 			isa = PBXGroup;
 			children = (
-				8A929C2A2846227500F377C4 /* ChevronTableViewCell.swift */,
 				8A3DFE3D2844C6A600311470 /* IOS6=HW13-DmitryDorodniy */,
 				8A3DFE3C2844C6A600311470 /* Products */,
 			);
@@ -57,6 +56,7 @@
 		8A3DFE3D2844C6A600311470 /* IOS6=HW13-DmitryDorodniy */ = {
 			isa = PBXGroup;
 			children = (
+				8A929C2A2846227500F377C4 /* ChevronTableViewCell.swift */,
 				8A3DFE3E2844C6A600311470 /* AppDelegate.swift */,
 				8A3DFE542844D4D900311470 /* TableViewController.swift */,
 				8A3DFE562844D62900311470 /* CellData.swift */,

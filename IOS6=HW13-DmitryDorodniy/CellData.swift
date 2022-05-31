@@ -42,7 +42,7 @@ class CellApi {
 
 }
 
-var allCellData = CellApi.getData()
+
 
 enum Metric {
     static let reuseString: String = "cell"
