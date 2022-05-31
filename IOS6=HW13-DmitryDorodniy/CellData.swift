@@ -14,6 +14,7 @@ struct Cell {
     var title: String
     var detail: String?
     var isToggle: Bool?
+    var isCustomCell: Bool?
 }
 
 
@@ -21,7 +22,7 @@ class CellApi {
     static func getData() -> [[Cell]] {
         let section1 = [Cell(image: "airplane", iconColor: .systemOrange, title: "Авиарежим", isToggle: true),
                         Cell(image: "wifi", title: "Wi-Fi", detail: "Не подключено"),
-                        Cell(image: "bluetooth", title: "Bluetooth", detail: "Вкл."),
+                        Cell(image: "bluetooth", title: "Bluetooth", detail: "Вкл.", isCustomCell: true),
                         Cell(image: "antenna.radiowaves.left.and.right", iconColor: .systemGreen, title: "Сотовая связь"),
                         Cell(image: "personalhotspot", title: "Режим модема", detail: "Выкл."),
                         Cell(image: "wifi.square.fill", title: "VPN", isToggle: true)]
@@ -35,7 +36,7 @@ class CellApi {
                         Cell(image: "switch.2", iconColor: .systemGray, title: "Пункт управления"),
                         Cell(image: "textformat.size", title: "Экран и яркость"),
                         Cell(title: "Экран \u{00AB}Домой\u{00BB}"),
-                        Cell(image: "figure.wave.circle", title: "Универсальный доступ")]
+                        Cell(image: "accessibility", title: "Универсальный доступ", isCustomCell: true)]
 
         return [section1, section2, section3]
     }

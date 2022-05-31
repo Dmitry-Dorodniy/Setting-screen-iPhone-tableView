@@ -71,7 +71,7 @@ extension TableViewController: UITableViewDataSource  {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellDataIndex = allCellData[indexPath.section][indexPath.row]
 
-        if cellDataIndex.title == "Bluetooth" {
+        if cellDataIndex.isCustomCell != nil {
             let cell = tableView.dequeueReusableCell(withIdentifier: ChevronTableViewCell.identifier, for: indexPath) as! ChevronTableViewCell
            cell.accessoryType = .disclosureIndicator
             cell.cellData = cellDataIndex

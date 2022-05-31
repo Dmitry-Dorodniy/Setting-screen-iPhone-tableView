@@ -23,7 +23,7 @@ class ChevronTableViewCell: UITableViewCell {
         }
     }
     let iconView: UIImageView = {
-        let icon = UIImageView(frame: CGRect(x: 3, y: 4, width: 18, height: 18))
+        let icon = UIImageView(frame: CGRect(x: 4, y: 4, width: 18, height: 18))
         icon.contentMode = .scaleAspectFill
 
         return icon
