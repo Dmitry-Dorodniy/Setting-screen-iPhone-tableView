@@ -12,14 +12,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         setWindow()
         return true
     }
 
     func setWindow() {
-
         let navigationController = UINavigationController(rootViewController: TableViewController())
 
         window = UIWindow(frame: UIScreen.main.bounds)
