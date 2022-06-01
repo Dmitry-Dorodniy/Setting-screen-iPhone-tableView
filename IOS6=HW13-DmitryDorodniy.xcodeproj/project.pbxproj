@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8A3DFE3F2844C6A600311470 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3DFE3E2844C6A600311470 /* AppDelegate.swift */; };
 		8A3DFE482844C6A700311470 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A3DFE472844C6A700311470 /* Assets.xcassets */; };
-		8A3DFE4B2844C6A700311470 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A3DFE492844C6A700311470 /* LaunchScreen.storyboard */; };
 		8A3DFE552844D4D900311470 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3DFE542844D4D900311470 /* TableViewController.swift */; };
 		8A3DFE572844D62900311470 /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3DFE562844D62900311470 /* CellData.swift */; };
 		8A929C2B2846227500F377C4 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A929C2A2846227500F377C4 /* CustomTableViewCell.swift */; };
@@ -19,7 +18,6 @@
 		8A3DFE3B2844C6A600311470 /* IOS6=HW13-DmitryDorodniy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IOS6=HW13-DmitryDorodniy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A3DFE3E2844C6A600311470 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A3DFE472844C6A700311470 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8A3DFE4A2844C6A700311470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A3DFE4C2844C6A700311470 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A3DFE542844D4D900311470 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		8A3DFE562844D62900311470 /* CellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
@@ -56,12 +54,11 @@
 		8A3DFE3D2844C6A600311470 /* IOS6=HW13-DmitryDorodniy */ = {
 			isa = PBXGroup;
 			children = (
-				8A929C2A2846227500F377C4 /* CustomTableViewCell.swift */,
+				8A3DFE562844D62900311470 /* CellData.swift */,
 				8A3DFE3E2844C6A600311470 /* AppDelegate.swift */,
 				8A3DFE542844D4D900311470 /* TableViewController.swift */,
-				8A3DFE562844D62900311470 /* CellData.swift */,
+				8A929C2A2846227500F377C4 /* CustomTableViewCell.swift */,
 				8A3DFE472844C6A700311470 /* Assets.xcassets */,
-				8A3DFE492844C6A700311470 /* LaunchScreen.storyboard */,
 				8A3DFE4C2844C6A700311470 /* Info.plist */,
 			);
 			path = "IOS6=HW13-DmitryDorodniy";
@@ -125,7 +122,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A3DFE4B2844C6A700311470 /* LaunchScreen.storyboard in Resources */,
 				8A3DFE482844C6A700311470 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,17 +141,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		8A3DFE492844C6A700311470 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8A3DFE4A2844C6A700311470 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8A3DFE4D2844C6A700311470 /* Debug */ = {
