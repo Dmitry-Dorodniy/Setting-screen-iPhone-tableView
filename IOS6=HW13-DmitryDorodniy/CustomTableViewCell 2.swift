@@ -91,15 +91,4 @@ class CustomTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.accessoryType = .disclosureIndicator
-
-        if (cellData?.detail) != nil {
-            return
-        } else {
-            detailLabel.text = nil
-        }
-    }
 }
