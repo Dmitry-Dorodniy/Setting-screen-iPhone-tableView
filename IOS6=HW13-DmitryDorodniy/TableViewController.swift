@@ -34,8 +34,7 @@ class TableViewController: UIViewController {
 
         view.backgroundColor = .systemBackground
         navigationItem.title = Metric.navigationTitle
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: Metric.defaultCellReuseIdentifier)
-        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: Metric.customCellReuseIdentifier)
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.reuseIdentifier)
     }
 
     private func setupHierarchy() {
@@ -71,88 +70,20 @@ extension TableViewController: UITableViewDataSource  {
 
         // MARK: - Set custom cell table
 
-        if cellDataIndex.isCustomCell != nil {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Metric.customCellReuseIdentifier,
-                                                     for: indexPath) as! CustomTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.reuseIdentifier,
+                                                          for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
 
             cell.accessoryType = .disclosureIndicator
-            cell.cellData = cellDataIndex
+            cell.configure(with: cellDataIndex)
 
             if cellDataIndex.isToggle != nil {
                 let switchButton = UISwitch(frame: .zero)
                 switchButton.addTarget(self, action: #selector(didChangeSwitch(_:)), for: .valueChanged)
                 cell.accessoryView = switchButton
-            }
+            } else { cell.accessoryView = nil }
             return cell
-        }
-
-        // MARK: - Set default cell table
-
-        let cell = UITableViewCell(style: .value1,
-                                   reuseIdentifier: Metric.defaultCellReuseIdentifier)
-        //стиль контента в ячейках
-        cell.accessoryType = .disclosureIndicator
-
-        // MARK: - Set icon color frame
-
-        let colorView = UIView()
-        colorView.layer.masksToBounds = true
-        colorView.layer.cornerRadius = Metric.iconColorViewCornerRadius
-        colorView.backgroundColor = cellDataIndex.iconColor
-        cell.addSubview(colorView)
-
-        // MARK: - Set default cell content
-        var content = cell.defaultContentConfiguration()
-        let image = UIImage(systemName: cellDataIndex.image ?? "")
-
-        content.imageProperties.tintColor = .white
-        content.imageProperties.maximumSize = CGSize(width: Metric.defaultCelliConSymbolSize,
-                                                     height: Metric.defaultCelliConSymbolSize)
-        content.image = image
-        content.text = cellDataIndex.title
-        content.secondaryText = cellDataIndex.detail ?? ""
-
-        cell.contentConfiguration = content
-
-        // MARK: - Set switch button
-
-        if cellDataIndex.isToggle != nil {
-            let switchButton = UISwitch(frame: .zero)
-            switchButton.addTarget(self, action: #selector(didChangeSwitch(_:)), for: .valueChanged)
-            cell.accessoryView = switchButton
-        }
-
-        // MARK: - Set Badge
-
-        if let badge = cellDataIndex.badge {
-            let badgeButton = UIButton(type: .custom)
-            UIView.performWithoutAnimation {
-                badgeButton.setTitle(title, for: .normal)
-                badgeButton.layoutIfNeeded()
-            }
-            var config = UIButton.Configuration.filled()
-            config.title = String(badge)
-            config.baseBackgroundColor = .systemRed
-            config.buttonSize = .mini
-            badgeButton.configuration = config
-
-            cell.addSubview(badgeButton)
-            badgeButton.translatesAutoresizingMaskIntoConstraints = false
-            badgeButton.rightAnchor.constraint(equalTo: cell.contentView.rightAnchor, constant: -8).isActive = true
-            badgeButton.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor).isActive = true
-        }
-
-        // MARK: - Setup layout
-
-        colorView.translatesAutoresizingMaskIntoConstraints = false
-        colorView.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor).isActive = true
-        colorView.leftAnchor.constraint(equalTo: cell.contentView.layoutMarginsGuide.leftAnchor, constant: -3).isActive = true
-        colorView.heightAnchor.constraint(equalToConstant: Metric.iconColorViewSize).isActive = true
-        colorView.widthAnchor.constraint(equalToConstant: Metric.iconColorViewSize).isActive = true
-
-        return cell
+       }
     }
-}
 
 extension TableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

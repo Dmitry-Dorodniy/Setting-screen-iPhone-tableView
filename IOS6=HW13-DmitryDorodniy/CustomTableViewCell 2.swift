@@ -7,18 +7,33 @@
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
-    static let reuseIdentifier: String = "CustomTableViewCell"
 
+    //доступ к данным cellData
+    var cellData: Cell? {
+        didSet {
+            guard let cellItem = cellData else { return }
+            titleLabel.text = cellItem.title
+            if let detailText = cellItem.detail {
+                detailLabel.text = detailText
+            }
+
+            if let icon = cellItem.image {
+                iconView.image = UIImage(named: icon)
+            }
+
+            colorView.backgroundColor = cellItem.iconColor
+        }
+    }
 
     // MARK: - Set icon symbols view
 
     let iconView: UIImageView = {
         let icon = UIImageView(frame: CGRect(x: 4,
-                                             y: 5,
+                                             y: 4,
                                              width: Metric.customCelliConSymbolSize,
                                              height: Metric.defaultCelliConSymbolSize))
-        icon.contentMode = .scaleAspectFit
-        icon.tintColor = .white
+        icon.contentMode = .scaleAspectFill
+
         return icon
     }()
 
@@ -27,32 +42,24 @@ class CustomTableViewCell: UITableViewCell {
         let colorView = UIView()
         colorView.layer.masksToBounds = true
         colorView.layer.cornerRadius = Metric.iconColorViewCornerRadius
+
         return colorView
     }()
 
     // MARK: - Set title and detail of cell
     let titleLabel: UILabel = {
         let label = UILabel()
+
         return label
     }()
 
     let detailLabel: UILabel = {
         let label = UILabel()
         label.textColor = .secondaryLabel
+
         return label
     }()
 
-    // MARK: - Set badge
-    private lazy var badgeButton: UIButton = {
-        let badgeButton = UIButton(type: .custom)
-        var config = UIButton.Configuration.filled()
-        //       config.title = String(badge)
-        config.baseBackgroundColor = .systemRed
-        config.buttonSize = .mini
-        badgeButton.configuration = config
-        return badgeButton
-    }()
-    
     // MARK: - Setup view
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -62,8 +69,7 @@ class CustomTableViewCell: UITableViewCell {
         contentView.addSubview(detailLabel)
         colorView.addSubview(iconView)
     }
-
-    // MARK: - Setup layout
+    
     override func layoutSubviews() {
         super.layoutSubviews()
 
@@ -80,41 +86,6 @@ class CustomTableViewCell: UITableViewCell {
         detailLabel.translatesAutoresizingMaskIntoConstraints = false
         detailLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -8).isActive = true
         detailLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-    }
-
-    // MARK: - Configure cell
-    func configure(with model: Cell) {
-
-        colorView.backgroundColor = model.iconColor
-
-        titleLabel.text = model.title
-        if let detailText = model.detail {
-            detailLabel.text = detailText
-        }
-
-        if model.isCustomCell != nil {
-            iconView.image = UIImage(named: model.image)
-        } else {
-
-            iconView.image = UIImage(systemName: model.image)
-        }
-
-        if let badge = model.badge {
-            badgeButton.setTitle(String(badge), for: .normal)
-            contentView.addSubview(badgeButton)
-            badgeButton.translatesAutoresizingMaskIntoConstraints = false
-            badgeButton.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -8).isActive = true
-            badgeButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-        }
-    }
-
-    // MARK: - Prepare for reuse
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.accessoryType = .disclosureIndicator
-
-        detailLabel.text = nil
-        badgeButton.removeFromSuperview()
     }
 
     required init?(coder: NSCoder) {
