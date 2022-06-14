@@ -44,7 +44,6 @@ class TableViewController: UIViewController {
     private func setupLayout() {
         tableView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
-
 }
 
 // MARK: - Table extentions
