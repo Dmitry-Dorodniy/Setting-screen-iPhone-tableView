@@ -114,6 +114,8 @@ extension TableViewController: UITableViewDataSource  {
 
         cell.contentConfiguration = content
 
+
+
         // MARK: - Set switch button
 
         if cellDataIndex.isToggle != nil {
