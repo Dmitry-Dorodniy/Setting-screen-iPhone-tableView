@@ -12,7 +12,7 @@ class CustomTableViewCell: UITableViewCell {
 
     // MARK: - Set icon symbols view
 
-    let iconView: UIImageView = {
+    private let iconView: UIImageView = {
         let icon = UIImageView(frame: CGRect(x: 4,
                                              y: 5,
                                              width: Metric.customCelliConSymbolSize,
@@ -24,9 +24,8 @@ class CustomTableViewCell: UITableViewCell {
 
     // MARK: - Set icon color frame
 
-    let colorView: UIView = {
+    private let colorView: UIView = {
         let colorView = UIView()
-        colorView.translatesAutoresizingMaskIntoConstraints = false
         colorView.layer.masksToBounds = true
         colorView.layer.cornerRadius = Metric.iconColorViewCornerRadius
         return colorView
@@ -34,13 +33,12 @@ class CustomTableViewCell: UITableViewCell {
 
     // MARK: - Set title and detail of cell
 
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    let detailLabel: UILabel = {
+    private let detailLabel: UILabel = {
         let label = UILabel()
         label.textColor = .secondaryLabel
         return label
@@ -82,6 +80,7 @@ class CustomTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
+        colorView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             colorView.rightAnchor.constraint(equalTo: titleLabel.leftAnchor, constant: -13),
             colorView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -89,6 +88,7 @@ class CustomTableViewCell: UITableViewCell {
             colorView.widthAnchor.constraint(equalToConstant: Metric.iconColorViewSize)
         ])
 
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.leftAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leftAnchor, constant: 40),
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)

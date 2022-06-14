@@ -45,13 +45,6 @@ class TableViewController: UIViewController {
         tableView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
 
-    @objc func didChangeSwitch(_ sender: UISwitch) {
-        if sender.isOn {
-            print("Turn ON")
-        } else {
-            print("Turn OFF")
-        }
-    }
 }
 
 // MARK: - Table extentions
@@ -73,14 +66,7 @@ extension TableViewController: UITableViewDataSource  {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.reuseIdentifier,
                                                           for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
 
-//            cell.accessoryType = .disclosureIndicator
             cell.configure(with: cellDataIndex)
-
-//            if cellDataIndex.isToggle != nil {
-//                let switchButton = UISwitch(frame: .zero)
-//                switchButton.addTarget(self, action: #selector(didChangeSwitch(_:)), for: .valueChanged)
-//                cell.accessoryView = switchButton
-//            } else { cell.accessoryView = nil }
             return cell
        }
     }
