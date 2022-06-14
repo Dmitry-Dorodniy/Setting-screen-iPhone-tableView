@@ -19,7 +19,6 @@ class CustomTableViewCell: UITableViewCell {
                                              height: Metric.defaultCelliConSymbolSize))
         icon.contentMode = .scaleAspectFit
         icon.tintColor = .white
-
         return icon
     }()
 
@@ -28,7 +27,6 @@ class CustomTableViewCell: UITableViewCell {
         let colorView = UIView()
         colorView.layer.masksToBounds = true
         colorView.layer.cornerRadius = Metric.iconColorViewCornerRadius
-
         return colorView
     }()
 
@@ -41,17 +39,17 @@ class CustomTableViewCell: UITableViewCell {
     let detailLabel: UILabel = {
         let label = UILabel()
         label.textColor = .secondaryLabel
-
         return label
     }()
 
-   private lazy var badgeButton: UIButton = {
-       let badgeButton = UIButton(type: .custom)
-       var config = UIButton.Configuration.filled()
-//       config.title = String(badge)
-       config.baseBackgroundColor = .systemRed
-       config.buttonSize = .mini
-       badgeButton.configuration = config
+    // MARK: - Set badge
+    private lazy var badgeButton: UIButton = {
+        let badgeButton = UIButton(type: .custom)
+        var config = UIButton.Configuration.filled()
+        //       config.title = String(badge)
+        config.baseBackgroundColor = .systemRed
+        config.buttonSize = .mini
+        badgeButton.configuration = config
         return badgeButton
     }()
     
@@ -64,7 +62,8 @@ class CustomTableViewCell: UITableViewCell {
         contentView.addSubview(detailLabel)
         colorView.addSubview(iconView)
     }
-    
+
+    // MARK: - Setup layout
     override func layoutSubviews() {
         super.layoutSubviews()
 
@@ -83,8 +82,10 @@ class CustomTableViewCell: UITableViewCell {
         detailLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
     }
 
-
+    // MARK: - Configure cell
     func configure(with model: Cell) {
+
+        colorView.backgroundColor = model.iconColor
 
         titleLabel.text = model.title
         if let detailText = model.detail {
@@ -96,23 +97,10 @@ class CustomTableViewCell: UITableViewCell {
         } else {
 
             iconView.image = UIImage(systemName: model.image)
-
         }
 
-        colorView.backgroundColor = model.iconColor
-
         if let badge = model.badge {
-//            let badgeButton = UIButton(type: .custom)
-            //            UIView.performWithoutAnimation {
-            ////                badgeButton.setTitle(, for: .normal)
-            //                badgeButton.layoutIfNeeded()
-            //            }
-//            var config = UIButton.Configuration.filled()
             badgeButton.setTitle(String(badge), for: .normal)
-//            config.baseBackgroundColor = .systemRed
-//            config.buttonSize = .mini
-//            badgeButton.configuration = config
-
             contentView.addSubview(badgeButton)
             badgeButton.translatesAutoresizingMaskIntoConstraints = false
             badgeButton.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -8).isActive = true
@@ -120,16 +108,16 @@ class CustomTableViewCell: UITableViewCell {
         }
     }
 
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-//
+    // MARK: - Prepare for reuse
     override func prepareForReuse() {
         super.prepareForReuse()
         self.accessoryType = .disclosureIndicator
 
         detailLabel.text = nil
         badgeButton.removeFromSuperview()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
