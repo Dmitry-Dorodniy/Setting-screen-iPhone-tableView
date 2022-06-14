@@ -7,46 +7,18 @@
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
-    static let customCellReuseIdentifier: String = "CustomTableViewCell"
-    //доступ к данным cellData
-//    var cellData: Cell? {
-//        didSet {
-//            guard let cellItem = cellData else { return }
-//            titleLabel.text = cellItem.title
-//            if let detailText = cellItem.detail {
-//                detailLabel.text = detailText
-//            }
-//
-//            if let icon = cellItem.image {
-//                iconView.image = UIImage(named: icon)
-//            }
-//
-//            colorView.backgroundColor = cellItem.iconColor
-//        }
-//    }
+    static let reuseIdentifier: String = "CustomTableViewCell"
 
-    func configure(with model: Cell) {
-//        guard let cellItem = model else { return }
-        titleLabel.text = model.title
-        if let detailText = model.detail {
-            detailLabel.text = detailText
-        }
-
-        if let icon = model.image {
-            iconView.image = UIImage(named: icon)
-        }
-
-        colorView.backgroundColor = model.iconColor
-    }
 
     // MARK: - Set icon symbols view
 
     let iconView: UIImageView = {
         let icon = UIImageView(frame: CGRect(x: 4,
-                                             y: 4,
+                                             y: 5,
                                              width: Metric.customCelliConSymbolSize,
                                              height: Metric.defaultCelliConSymbolSize))
-        icon.contentMode = .scaleAspectFill
+        icon.contentMode = .scaleAspectFit
+        icon.tintColor = .white
 
         return icon
     }()
@@ -63,7 +35,6 @@ class CustomTableViewCell: UITableViewCell {
     // MARK: - Set title and detail of cell
     let titleLabel: UILabel = {
         let label = UILabel()
-
         return label
     }()
 
@@ -74,6 +45,16 @@ class CustomTableViewCell: UITableViewCell {
         return label
     }()
 
+   private lazy var badgeButton: UIButton = {
+       let badgeButton = UIButton(type: .custom)
+       var config = UIButton.Configuration.filled()
+//       config.title = String(badge)
+       config.baseBackgroundColor = .systemRed
+       config.buttonSize = .mini
+       badgeButton.configuration = config
+        return badgeButton
+    }()
+    
     // MARK: - Setup view
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -102,18 +83,53 @@ class CustomTableViewCell: UITableViewCell {
         detailLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
     }
 
+
+    func configure(with model: Cell) {
+
+        titleLabel.text = model.title
+        if let detailText = model.detail {
+            detailLabel.text = detailText
+        }
+
+        if model.isCustomCell != nil {
+            iconView.image = UIImage(named: model.image)
+        } else {
+
+            iconView.image = UIImage(systemName: model.image)
+
+        }
+
+        colorView.backgroundColor = model.iconColor
+
+        if let badge = model.badge {
+//            let badgeButton = UIButton(type: .custom)
+            //            UIView.performWithoutAnimation {
+            ////                badgeButton.setTitle(, for: .normal)
+            //                badgeButton.layoutIfNeeded()
+            //            }
+//            var config = UIButton.Configuration.filled()
+            badgeButton.setTitle(String(badge), for: .normal)
+//            config.baseBackgroundColor = .systemRed
+//            config.buttonSize = .mini
+//            badgeButton.configuration = config
+
+            contentView.addSubview(badgeButton)
+            badgeButton.translatesAutoresizingMaskIntoConstraints = false
+            badgeButton.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -8).isActive = true
+            badgeButton.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        }
+    }
+
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 //
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//        self.accessoryType = .disclosureIndicator
-//
-//        if (cellData?.detail) != nil {
-//            detailLabel.text = cellData?.detail
-//        } else {
-//            detailLabel.text = nil
-//        }
-//    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.accessoryType = .disclosureIndicator
+
+        detailLabel.text = nil
+        badgeButton.removeFromSuperview()
+    }
 }

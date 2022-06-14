@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct Cell {
-    var image: String?
+    var image: String
     var iconColor: UIColor = .systemBlue
     var title: String
     var detail: String?
@@ -83,7 +83,7 @@ class CellApi {
 
 enum Metric {
     static let defaultCellReuseIdentifier: String = "DefaulTableViewCell"
-//    static let customCellReuseIdentifier: String = "CustomTableViewCell"
+//    static let reuseIdentifier: String = "CustomTableViewCell"
     static let navigationTitle: String = "Настройки"
     static let iconColorViewSize: CGFloat = 30
     static let iconColorViewCornerRadius: CGFloat = 6
