@@ -83,7 +83,7 @@ class CellApi {
 
 enum Metric {
     static let defaultCellReuseIdentifier: String = "DefaulTableViewCell"
-    static let customCellReuseIdentifier: String = "CustomTableViewCell"
+//    static let customCellReuseIdentifier: String = "CustomTableViewCell"
     static let navigationTitle: String = "Настройки"
     static let iconColorViewSize: CGFloat = 30
     static let iconColorViewCornerRadius: CGFloat = 6

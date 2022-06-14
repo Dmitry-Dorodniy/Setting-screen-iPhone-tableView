@@ -7,22 +7,36 @@
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
-
+    static let customCellReuseIdentifier: String = "CustomTableViewCell"
     //доступ к данным cellData
-    var cellData: Cell? {
-        didSet {
-            guard let cellItem = cellData else { return }
-            titleLabel.text = cellItem.title
-            if let detailText = cellItem.detail {
-                detailLabel.text = detailText
-            }
+//    var cellData: Cell? {
+//        didSet {
+//            guard let cellItem = cellData else { return }
+//            titleLabel.text = cellItem.title
+//            if let detailText = cellItem.detail {
+//                detailLabel.text = detailText
+//            }
+//
+//            if let icon = cellItem.image {
+//                iconView.image = UIImage(named: icon)
+//            }
+//
+//            colorView.backgroundColor = cellItem.iconColor
+//        }
+//    }
 
-            if let icon = cellItem.image {
-                iconView.image = UIImage(named: icon)
-            }
-
-            colorView.backgroundColor = cellItem.iconColor
+    func configure(with model: Cell) {
+//        guard let cellItem = model else { return }
+        titleLabel.text = model.title
+        if let detailText = model.detail {
+            detailLabel.text = detailText
         }
+
+        if let icon = model.image {
+            iconView.image = UIImage(named: icon)
+        }
+
+        colorView.backgroundColor = model.iconColor
     }
 
     // MARK: - Set icon symbols view

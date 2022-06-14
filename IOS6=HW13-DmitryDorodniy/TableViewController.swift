@@ -35,7 +35,7 @@ class TableViewController: UIViewController {
         view.backgroundColor = .systemBackground
         navigationItem.title = Metric.navigationTitle
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Metric.defaultCellReuseIdentifier)
-        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: Metric.customCellReuseIdentifier)
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.customCellReuseIdentifier)
     }
 
     private func setupHierarchy() {
@@ -72,11 +72,13 @@ extension TableViewController: UITableViewDataSource  {
         // MARK: - Set custom cell table
 
         if cellDataIndex.isCustomCell != nil {
-            let cell = tableView.dequeueReusableCell(withIdentifier: Metric.customCellReuseIdentifier,
-                                                     for: indexPath) as! CustomTableViewCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.customCellReuseIdentifier,
+                                                          for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
+
 
             cell.accessoryType = .disclosureIndicator
-            cell.cellData = cellDataIndex
+//            cell.cellData = cellDataIndex
+            cell.configure(with: cellDataIndex)
 
             if cellDataIndex.isToggle != nil {
                 let switchButton = UISwitch(frame: .zero)
