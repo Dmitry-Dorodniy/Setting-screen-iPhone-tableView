@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A0D58002858FD400066C99E /* GetCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D57FF2858FD400066C99E /* GetCellData.swift */; };
 		8A3DFE3F2844C6A600311470 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3DFE3E2844C6A600311470 /* AppDelegate.swift */; };
 		8A3DFE482844C6A700311470 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A3DFE472844C6A700311470 /* Assets.xcassets */; };
 		8A3DFE552844D4D900311470 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3DFE542844D4D900311470 /* TableViewController.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A0D57FF2858FD400066C99E /* GetCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCellData.swift; sourceTree = "<group>"; };
 		8A3DFE3B2844C6A600311470 /* IOS6=HW13-DmitryDorodniy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IOS6=HW13-DmitryDorodniy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A3DFE3E2844C6A600311470 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A3DFE472844C6A700311470 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				8A3DFE562844D62900311470 /* CellData.swift */,
+				8A0D57FF2858FD400066C99E /* GetCellData.swift */,
 				8A3DFE3E2844C6A600311470 /* AppDelegate.swift */,
 				8A3DFE542844D4D900311470 /* TableViewController.swift */,
 				8A929C2A2846227500F377C4 /* CustomTableViewCell.swift */,
@@ -136,6 +139,7 @@
 				8A3DFE552844D4D900311470 /* TableViewController.swift in Sources */,
 				8A929C2B2846227500F377C4 /* CustomTableViewCell.swift in Sources */,
 				8A3DFE3F2844C6A600311470 /* AppDelegate.swift in Sources */,
+				8A0D58002858FD400066C99E /* GetCellData.swift in Sources */,
 				8A3DFE572844D62900311470 /* CellData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
