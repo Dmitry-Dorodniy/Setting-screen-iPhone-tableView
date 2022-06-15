@@ -88,7 +88,7 @@
 		8A0D582C285911310066C99E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8A3DFE542844D4D900311470 /* TableViewController.swift */,
+				8A929C2A2846227500F377C4 /* CustomTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -96,7 +96,7 @@
 		8A0D582D285911390066C99E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8A929C2A2846227500F377C4 /* CustomTableViewCell.swift */,
+				8A3DFE542844D4D900311470 /* TableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
