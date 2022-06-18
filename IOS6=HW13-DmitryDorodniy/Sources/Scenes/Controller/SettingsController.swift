@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SettingsController: UIViewController {
 
-        private var tableView: TableView? {
+        private var tableView: SettingsView? {
             guard isViewLoaded else { return nil }
-            return view as? TableView
+            return view as? SettingsView
         }
 
         var model: CellApi?
@@ -19,14 +19,15 @@ class ViewController: UIViewController {
         override func viewDidLoad() {
             super.viewDidLoad()
 
-            view = TableView()
+            view = SettingsView()
             model = CellApi()
             navigationItem.title = Metric.navigationTitle
+            
             configureView()
         }
     }
 
-    private extension ViewController {
+    private extension SettingsController {
         func configureView() {
             guard let models = model?.getData() else { return }
             tableView?.configureView(with: models)

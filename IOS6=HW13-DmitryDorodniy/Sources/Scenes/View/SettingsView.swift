@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TableView: UIView {
+class SettingsView: UIView {
 
     // MARK: - Configure view
 
@@ -51,8 +51,8 @@ class TableView: UIView {
 
     private func setupView() {
         self.backgroundColor = .systemBackground
-        tableView.register(CustomTableViewCell.self,
-                           forCellReuseIdentifier: CustomTableViewCell.reuseIdentifier)
+        tableView.register(SettingsTableViewCell.self,
+                           forCellReuseIdentifier: SettingsTableViewCell.reuseIdentifier)
     }
 
     private func setupHierarchy() {
@@ -64,7 +64,7 @@ class TableView: UIView {
     }
 }
 
-extension TableView: UITableViewDataSource  {
+extension SettingsView: UITableViewDataSource  {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return models.count //число секций
@@ -78,15 +78,15 @@ extension TableView: UITableViewDataSource  {
 
         // MARK: - Set custom cell table
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CustomTableViewCell.reuseIdentifier,
-                                                       for: indexPath) as? CustomTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.reuseIdentifier,
+                                                       for: indexPath) as? SettingsTableViewCell else { return UITableViewCell() }
 
         cell.configure(with: cellDataIndex)
         return cell
     }
 }
 
-extension TableView: UITableViewDelegate {
+extension SettingsView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let title = models[indexPath.section][indexPath.row].title

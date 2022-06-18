@@ -6,7 +6,7 @@
 
 import UIKit
 
-class CustomTableViewCell: UITableViewCell {
+class SettingsTableViewCell: UITableViewCell {
     static let reuseIdentifier: String = "CustomTableViewCell"
 
 

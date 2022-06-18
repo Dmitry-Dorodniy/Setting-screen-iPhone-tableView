@@ -12,9 +12,9 @@
 		8A3DFE3F2844C6A600311470 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3DFE3E2844C6A600311470 /* AppDelegate.swift */; };
 		8A3DFE482844C6A700311470 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A3DFE472844C6A700311470 /* Assets.xcassets */; };
 		8A3DFE572844D62900311470 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3DFE562844D62900311470 /* Cell.swift */; };
-		8A929C2B2846227500F377C4 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A929C2A2846227500F377C4 /* CustomTableViewCell.swift */; };
-		8AFEF28A285E1E560049F51D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF289285E1E560049F51D /* ViewController.swift */; };
-		8AFEF28C285E1EDB0049F51D /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF28B285E1EDB0049F51D /* TableView.swift */; };
+		8A929C2B2846227500F377C4 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A929C2A2846227500F377C4 /* SettingsTableViewCell.swift */; };
+		8AFEF28A285E1E560049F51D /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF289285E1E560049F51D /* SettingsController.swift */; };
+		8AFEF28C285E1EDB0049F51D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFEF28B285E1EDB0049F51D /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,9 +25,9 @@
 		8A3DFE472844C6A700311470 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A3DFE4C2844C6A700311470 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A3DFE562844D62900311470 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
-		8A929C2A2846227500F377C4 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		8AFEF289285E1E560049F51D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8AFEF28B285E1EDB0049F51D /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		8A929C2A2846227500F377C4 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		8AFEF289285E1E560049F51D /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		8AFEF28B285E1EDB0049F51D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +90,8 @@
 		8A0D582C285911310066C99E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8A929C2A2846227500F377C4 /* CustomTableViewCell.swift */,
-				8AFEF28B285E1EDB0049F51D /* TableView.swift */,
+				8A929C2A2846227500F377C4 /* SettingsTableViewCell.swift */,
+				8AFEF28B285E1EDB0049F51D /* SettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -99,7 +99,7 @@
 		8A0D582D285911390066C99E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				8AFEF289285E1E560049F51D /* ViewController.swift */,
+				8AFEF289285E1E560049F51D /* SettingsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -198,11 +198,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A929C2B2846227500F377C4 /* CustomTableViewCell.swift in Sources */,
+				8A929C2B2846227500F377C4 /* SettingsTableViewCell.swift in Sources */,
 				8A3DFE3F2844C6A600311470 /* AppDelegate.swift in Sources */,
 				8A0D580228590A770066C99E /* Metric.swift in Sources */,
-				8AFEF28A285E1E560049F51D /* ViewController.swift in Sources */,
-				8AFEF28C285E1EDB0049F51D /* TableView.swift in Sources */,
+				8AFEF28A285E1E560049F51D /* SettingsController.swift in Sources */,
+				8AFEF28C285E1EDB0049F51D /* SettingsView.swift in Sources */,
 				8A0D58002858FD400066C99E /* CellApi.swift in Sources */,
 				8A3DFE572844D62900311470 /* Cell.swift in Sources */,
 			);
