@@ -26,6 +26,8 @@ class SettingsView: UIView {
                                 style: .insetGrouped)
         table.dataSource = self
         table.delegate = self
+        table.register(SettingsTableViewCell.self,
+                           forCellReuseIdentifier: SettingsTableViewCell.reuseIdentifier)
         return table
     }()
 
@@ -51,8 +53,6 @@ class SettingsView: UIView {
 
     private func setupView() {
         self.backgroundColor = .systemBackground
-        tableView.register(SettingsTableViewCell.self,
-                           forCellReuseIdentifier: SettingsTableViewCell.reuseIdentifier)
     }
 
     private func setupHierarchy() {
