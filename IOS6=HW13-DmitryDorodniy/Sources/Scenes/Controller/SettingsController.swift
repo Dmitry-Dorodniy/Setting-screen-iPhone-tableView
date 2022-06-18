@@ -9,7 +9,7 @@ import UIKit
 
 class SettingsController: UIViewController {
 
-        private var tableView: SettingsView? {
+        private var settingView: SettingsView? {
             guard isViewLoaded else { return nil }
             return view as? SettingsView
         }
@@ -21,8 +21,6 @@ class SettingsController: UIViewController {
 
             view = SettingsView()
             model = CellApi()
-            navigationItem.title = Metric.navigationTitle
-            
             configureView()
         }
     }
@@ -30,7 +28,9 @@ class SettingsController: UIViewController {
     private extension SettingsController {
         func configureView() {
             guard let models = model?.getData() else { return }
-            tableView?.configureView(with: models)
+            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationItem.title = Metric.navigationTitle
+            settingView?.configureView(with: models)
         }
     }
 

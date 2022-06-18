@@ -93,3 +93,5 @@ extension SettingsView: UITableViewDelegate {
         print("Выбрана ячейка \(title)")
     }
 }
+
+
