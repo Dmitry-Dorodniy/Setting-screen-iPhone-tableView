@@ -8,7 +8,7 @@
 import UIKit
 
 class CellApi {
-    static func getData() -> [[Cell]] {
+    func getData() -> [[Cell]] {
         let section1 = [Cell(image: "airplane",
                              iconColor: .systemOrange,
                              title: "Авиарежим",

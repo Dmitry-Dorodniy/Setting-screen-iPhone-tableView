@@ -20,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func setWindow() {
-        let navigationController = UINavigationController(rootViewController: TableViewController())
+//        let navigationController = UINavigationController(rootViewController: TableViewController())
+        let navigationController = UINavigationController(rootViewController: ViewController())
+
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController

@@ -1,12 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "homescreen.png",
+      "filename" : "vpn.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "homescreen 2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
