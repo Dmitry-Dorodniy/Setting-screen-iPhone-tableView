@@ -7,8 +7,10 @@
 
 import UIKit
 
-class SettingsView: UIView {
+final class SettingsView: UIView {
 
+    weak var delegate: SettingConrollerOutput?
+    
     // MARK: - Configure view
 
     func configureView(with models: [[Cell]]) {
@@ -89,8 +91,9 @@ extension SettingsView: UITableViewDataSource  {
 extension SettingsView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let title = models[indexPath.section][indexPath.row].title
-        print("Выбрана ячейка \(title)")
+        let model = models[indexPath.section][indexPath.row]
+        print("Выбрана ячейка \(model.title)")
+        delegate?.pushDetail(with: model)
     }
 }
 

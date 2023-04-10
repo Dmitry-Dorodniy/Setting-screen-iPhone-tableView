@@ -122,7 +122,9 @@ class SettingsTableViewCell: UITableViewCell {
 
         if model.isToggle != nil {
             self.accessoryView = switchButton
-        } else { self.accessoryView = nil }
+        } else {
+            self.accessoryView = nil
+        }
 
         if let badge = model.badge {
             badgeButton.setTitle(String(badge), for: .normal)
