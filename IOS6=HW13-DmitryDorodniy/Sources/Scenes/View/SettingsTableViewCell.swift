@@ -122,6 +122,7 @@ class SettingsTableViewCell: UITableViewCell {
 
         if model.isToggle != nil {
             self.accessoryView = switchButton
+            selectionStyle = .none
         } else {
             self.accessoryView = nil
         }

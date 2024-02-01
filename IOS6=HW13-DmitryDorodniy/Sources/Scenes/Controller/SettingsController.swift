@@ -41,6 +41,7 @@ final class SettingsController: UIViewController, SettingConrollerOutput {
      func pushDetail(with model: Cell) {
             let detailViewController = DetailViewController()
          detailViewController.model = model
+//         navigationController?.pushViewController(detailViewController, animated: true)
          present(detailViewController, animated: true)
         }
     }

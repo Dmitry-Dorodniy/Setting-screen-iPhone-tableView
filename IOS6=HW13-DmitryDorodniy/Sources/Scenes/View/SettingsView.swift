@@ -93,7 +93,15 @@ extension SettingsView: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let model = models[indexPath.section][indexPath.row]
         print("Выбрана ячейка \(model.title)")
-        delegate?.pushDetail(with: model)
+        
+        switch model.title {
+        case "Авиарежим", "VPN":
+            break
+        default:
+            delegate?.pushDetail(with: model)
+        }
+        
+//        delegate?.pushDetail(with: model)
     }
 }
 
